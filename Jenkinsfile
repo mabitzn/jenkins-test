@@ -13,6 +13,7 @@ pipeline {
               sh 'npm install'
           }
       }
+    }
 
         stage('Test') {
           withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
