@@ -1,8 +1,4 @@
-pipeline {
-    environment {
-        CHROME_BIN = '/usr/bin/chromedriver'
-    }
-
+node {
     stage('Checkout') {
         deleteDir()
         checkout scm
