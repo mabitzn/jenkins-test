@@ -1,5 +1,5 @@
 pipeline {
-    stages {
+    steps {
         stage('Checkout') {
             deleteDir()
             checkout scm
@@ -13,7 +13,8 @@ pipeline {
     
         stage('Test') {
             echo "Linting..."
-            sh "ng run lint"
+            sh "ng lint"
+            echo "Testing..."
         }
 
         stage('Build') {
