@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Linting..."
-                sh "ng lint"
+                sh "npm run ng lint"
                 echo "Testing..."
             }
             
@@ -25,7 +25,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'ng build --prod --aot --sm --progress=false'
+                sh 'npm run ng build --prod --aot --sm --progress=false'
             }
         }
 
