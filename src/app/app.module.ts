@@ -1,24 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { routes } from './router';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppStoreModule } from './store/store.module';
-import { AboutComponent } from './about.component';
-import { RouterModule } from '@angular/router';
-import { externalModules } from './build-specific';
-import { declarations } from './core';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, declarations],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
-    AppStoreModule,
-    externalModules
+    AppRoutingModule
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
