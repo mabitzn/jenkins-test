@@ -7,22 +7,20 @@ pipeline {
       steps { sh 'npm install' }
     }
 
-    stage("Download chromedriver") {
-        steps {
-            sh "sudo mv chromedriver /usr/bin/chromedriver"
-            sh "chromedriver - version"
-            sh "export CHROME_BIN=/usr/bin/chromedriver"
-        }
-    }
+    docker.image('trion/ng-cli-karma:1.2.1').inside {
+      stage('NPM Install') {
+          withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+              sh 'npm install'
+          }
+      }
 
     stage('Test') {
       parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm run-script lint' }
-        }
-        stage('Unit tests') {
-            steps { sh 'npm run-script test' }
-        }
+        stage('Test') {
+          withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+            sh 'ng test --progress=false --watch false'
+          }
+      }
       }
     }
 
