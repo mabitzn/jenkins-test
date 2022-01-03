@@ -1,28 +1,38 @@
 pipeline {
-    steps {
+    stages {
         stage('Checkout') {
-            deleteDir()
-            checkout scm
+            steps {
+                deleteDir()
+                checkout scm
+            }
         }
 
         stage('NPM Install') {
-            withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+            steps {
                 sh 'npm install'
             }
         }
     
         stage('Test') {
-            echo "Linting..."
-            sh "ng lint"
-            echo "Testing..."
+            steps {
+                echo "Linting..."
+                sh "ng lint"
+                echo "Testing..."
+            }
+            
         }
 
         stage('Build') {
-            sh 'ng build --prod --aot --sm --progress=false'
+            steps {
+                sh 'ng build --prod --aot --sm --progress=false'
+            }
         }
 
         stage('Deploy') {
-            echo "Deploying..."
+            steps {
+                echo "Deploying..."
+            }
+            
         }
     }
     
