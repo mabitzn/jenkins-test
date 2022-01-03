@@ -9,8 +9,6 @@ pipeline {
 
     stage("Download chromedriver") {
         steps {
-            sh "wget https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip"
-            sh "unzip chromedriver_linux64.zip"
             sh "sudo mv chromedriver /usr/bin/chromedriver"
             sh "chromedriver - version"
             sh "export CHROME_BIN=/usr/bin/chromedriver"
