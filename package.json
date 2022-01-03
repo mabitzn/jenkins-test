@@ -10,7 +10,6 @@
     "lint": "ng lint",
     "map": "source-map-explorer dist/heroes-angular/*es2015*.js*",
     "quick": "concurrently \"npm run backend\" \"npm run start-ng\"",
-    "cypress": "npx cypress open",
     "e2e": "concurrently \"npm run quick\" \"npm run cypress\"",
     "backend": "json-server --watch db.json --routes routes.json --port 2500 --middlewares ./node_modules/json-server-reset"
   },
@@ -47,7 +46,6 @@
     "@types/node": "^14.14.8",
     "codelyzer": "^6.0.0",
     "concurrently": "^5.3.0",
-    "cypress": "^5.6.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "json-server": "^0.16.3",
