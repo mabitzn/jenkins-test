@@ -14,15 +14,12 @@ pipeline {
           }
       }
 
-    stage('Test') {
-      parallel {
         stage('Test') {
           withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
             sh 'ng test --progress=false --watch false'
           }
       }
-      }
-    }
+    
 
     stage('Build') {
       steps { sh 'npm run-script build' }
