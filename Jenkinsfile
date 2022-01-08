@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'cypress/base:12.16.1' 
+            image 'cypress/base:16.13.0' 
             args '-p 3000:3000' 
         }
     }
@@ -20,6 +20,11 @@ pipeline {
         stage('Test') { 
             steps {
                 sh 'npm run ci:cy-run'
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                sh 'npm run posttest'
             }
         }
     }
