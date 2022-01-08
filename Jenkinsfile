@@ -22,10 +22,5 @@ pipeline {
                 sh 'npm run ci:cy-run'
             }
         }
-        stage('Deploy') { 
-            steps {
-                sh 'npm run posttest'
-            }
-        }
     }
 }
